@@ -5,6 +5,16 @@ describe('CommentList', () => {
     let component;
 
     beforeEach(() => {
-       component = renderComponent(CommentList);
+        const props = { comments: ['First comment', 'Second comment'] };
+        component = renderComponent(CommentList, null, props);
+    });
+
+    it('shows a list for each comment', () => {
+        expect(component.find('li').length).to.equals(2);
+    });
+
+    it('shows each comment that is provided', () => {
+        expect(component).to.contain('First comment');
+        expect(component).to.contain('Second comment');
     });
 });
